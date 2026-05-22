@@ -7,4 +7,4 @@ langchain-groq
 langchain-community
 langchain-chroma
 chromadb
-huggingface_hub
+fastembed

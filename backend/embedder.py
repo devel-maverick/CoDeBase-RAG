@@ -1,10 +1,9 @@
-from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
+from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_chroma import Chroma
-from config import EMBEDDING_MODEL,CHROMA_DB_PATH, HF_TOKEN
+from config import EMBEDDING_MODEL, CHROMA_DB_PATH
 
 def get_embeddings():
-    return HuggingFaceInferenceAPIEmbeddings(
-        api_key=HF_TOKEN,
+    return FastEmbedEmbeddings(
         model_name=f"sentence-transformers/{EMBEDDING_MODEL}"
     )
 
