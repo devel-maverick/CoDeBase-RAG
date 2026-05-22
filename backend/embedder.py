@@ -1,10 +1,11 @@
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_chroma import Chroma
-from config import EMBEDDING_MODEL,CHROMA_DB_PATH
+from config import EMBEDDING_MODEL,CHROMA_DB_PATH, HF_TOKEN
 
 def get_embeddings():
-    return HuggingFaceEmbeddings(
-        model_name=EMBEDDING_MODEL
+    return HuggingFaceInferenceAPIEmbeddings(
+        api_key=HF_TOKEN,
+        model_name=f"sentence-transformers/{EMBEDDING_MODEL}"
     )
 
 def get_vector_db(documents,collection_name):
